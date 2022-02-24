@@ -1,0 +1,214 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="container marketing" style="width: 80%; margin-top: 70px; margin-bottom: 20px;">
+    <div class="row" >
+        <div class="col-12 col-md-4" style="margin-top: 10px;" >
+            <div class="img-thumbnail" style="background-color: rgb(199, 250, 194);"> 
+                <a href="/menudetial/新品/" style="text-decoration: none;"><h2 align="center" style="color: red;"><strong>新品上市</strong></h2></a>
+                <table class="table table-striped" style="background-color: rgb(121, 248, 189);">
+                    <tr>
+                        <th>品項</th>
+                        <th>價格</th>
+                    </tr>
+                    {% for new in news %}
+                    <tr>
+                        <td  width="150">{{ new.pName }}</td>
+                        <td  width="90">
+                            {{ new.pPrice }}
+                            {% if new.pQty == True %}
+                            <img src="{% static 'images/img_99.jpg' %}" style="width: 30px;height: 30px;"  align="right"/>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+        <div class="col-12 col-md-4" style="margin-top: 10px;">
+            <div class="img-thumbnail" style="background-color: rgb(247, 248, 180);"> 
+                <a href="/menudetial/蛋餅/" style="text-decoration: none; color: brown"><h2 align="center">蛋餅</h2></a>
+                <table class="table table-striped" style="background-color: rgb(237, 240, 74);">
+                    <tr>
+                        <th>品項</th>
+                        <th>價格</th>
+                    </tr>
+                    {% for quiche in quiches %}
+                    <tr>
+                        <td  width="150">{{ quiche.pName }}</td>
+                        <td  width="90">
+                            {{ quiche.pPrice }}
+                            {% if quiche.pQty == True %}
+                            <img src="{% static 'images/img_99.jpg' %}" style="width: 30px;height: 30px;"  align="right"/>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+        <div class="col-12 col-md-4" style="margin-top: 10px;">
+            <div class="img-thumbnail" style="background-color: rgb(241, 224, 178);"> 
+                <a href="/menudetial/夾烤吐司/" style="text-decoration: none; color: brown"><h2 align="center">夾烤吐司</h2></a>
+                <table class="table table-striped" style="background-color: rgb(245, 208, 86);">
+                    <tr>
+                        <th>品項</th>
+                        <th>價格</th>
+                    </tr>
+                    {% for toast in toasts %}
+                    <tr>
+                        <td  width="150">{{ toast.pName }}</td>
+                        <td  width="90">
+                            {{ toast.pPrice }}
+                            {% if toast.pQty == True %}
+                            <img src="{% static 'images/img_99.jpg' %}" style="width: 30px;height: 30px;"  align="right"/>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-4" style="margin-top: 10px;">
+            <div class="img-thumbnail" style="background-color: rgb(174, 206, 248);">   
+                <a href="/menudetial/漢堡/" style="text-decoration: none; color: brown"><h2 align="center">漢堡</h2></a>
+                <table class="table table-striped" style="background-color: rgb(116, 160, 243);"> 
+                    <tr>
+                        <th>品項</th>
+                        <th>價格</th>
+                    </tr>
+                    {% for hamburger in hamburgers %}
+                    <tr>
+                        <td  width="150">{{ hamburger.pName }}</td>
+                        <td  width="90">
+                            {{ hamburger.pPrice }}
+                            {% if hamburger.pQty == True %}
+                            <img src="{% static 'images/img_99.jpg' %}" style="width: 30px;height: 30px;"  align="right"/>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+        <div class="col-12 col-md-4" style="margin-top: 10px;">
+            <div class="img-thumbnail" style="background-color: rgb(245, 195, 175);"> 
+                <a href="/menudetial/炸物/" style="text-decoration: none; color: brown"><h2 align="center">炸物</h2></a>
+                <table class="table table-striped" style="background-color: rgb(247, 122, 122);">
+                    <tr>
+                        <th>品項</th>
+                        <th>價格</th>
+                    </tr>
+                    {% for fried in frieds %}
+                    <tr>
+                        <td  width="150">{{ fried.pName }}</td>
+                        <td  width="90">
+                            {{ fried.pPrice }}
+                            {% if fried.pQty == True %}
+                            <img src="{% static 'images/img_99.jpg' %}" style="width: 30px;height: 30px;"  align="right"/>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+        <div class="col-12 col-md-4" style="margin-top: 10px;" >
+            <div class="img-thumbnail" style="background-color: rgb(224, 184, 247);"> 
+                <a href="/menudetial/中式小點/" style="text-decoration: none; color: brown"><h2 align="center">中式小點</h2></a>
+                <table class="table table-striped" style="background-color: rgb(183, 115, 238);">
+                    <tr>
+                        <th>品項</th>
+                        <th>價格</th>
+                    </tr>
+                    {% for chinese in chineses %}
+                    <tr>
+                        <td  width="150">{{ chinese.pName }}</td>
+                        <td  width="90">
+                            {{ chinese.pPrice }}
+                            {% if chinese.pQty == True %}
+                            <img src="{% static 'images/img_99.jpg' %}" style="width: 30px;height: 30px;"  align="right"/>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-4" style="margin-top: 10px;">
+            <div class="img-thumbnail" style="background-color: rgb(184, 247, 247);"> 
+                <a href="/menudetial/簡餐/" style="text-decoration: none; color: brown"><h2 align="center">簡餐</h2></a>
+                <table class="table table-striped" style="background-color: rgb(121, 240, 240);">
+                    <tr>
+                        <th>品項</th>
+                        <th>價格</th>
+                    </tr>
+                    {% for easy in easys %}
+                    <tr>
+                        <td  width="150">{{ easy.pName }}</td>
+                        <td  width="90">
+                            {{ easy.pPrice }}
+                            {% if easy.pQty == True %}
+                            <img src="{% static 'images/img_99.jpg' %}" style="width: 30px;height: 30px;"  align="right"/>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+        <div class="col-12 col-md-4" style="margin-top: 10px;">
+            <div class="img-thumbnail" style="background-color: rgb(239, 197, 245);"> 
+                <a href="/menudetial/甜點/" style="text-decoration: none; color: brown"><h2 align="center">甜點</h2></a>
+                <table class="table table-striped" style="background-color: rgb(235, 150, 247);">
+                    <tr>
+                        <th>品項</th>
+                        <th>價格</th>
+                    </tr>
+                    {% for dessert in desserts %}
+                    <tr>
+                        <td  width="150">{{ dessert.pName }}</td>
+                        <td  width="90">
+                            {{ dessert.pPrice }}
+                            {% if dessert.pQty == True %}
+                            <img src="{% static 'images/img_99.jpg' %}" style="width: 30px;height: 30px;" align="right"/>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+        <div class="col-12 col-md-4" style="margin-top: 10px;">
+            <div class="img-thumbnail" style="background-color: rgb(197, 245, 221);"> 
+                <a href="/menudetial/飲品/" style="text-decoration: none; color: brown"><h2 align="center">飲品</h2></a>
+                <table class="table table-striped" style="background-color: rgb(132, 243, 128);">
+                    <tr>
+                        
+                        <th>品項</th>
+                        <th>價格</th>
+                    </tr>
+                    {% for drink in drinks %}
+                    <tr>
+                        <td  width="150"> {{ drink.pName }}</td>
+                        <td  width="90">
+                            {{ drink.pPrice }}
+                            {% if drink.pQty == True %}
+                            <img src="{% static 'images/img_99.jpg' %}" style="width: 30px;height: 30px;" align="right"/>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

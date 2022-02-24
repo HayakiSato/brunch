@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block script %}
+<script async defer type="text/javascript" src="http://maps.googleapis.com/maps/api/js?callback=loadGoogleMap"></script>
+<script language="javascript">
+    google.maps.event.addDomListener(window,'load',loadGoogleMap);
+    var map;
+    function loadGoogleMap(){
+        var center = new google.maps.LatLng(25.021918, 121.232723);
+        map = new google.maps.Map(document.getElementById('map_div'),{
+            zoom: 16,
+            center: center,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+        });
+        var latLng =  new google.maps.LatLng(25.021918, 121.232723);
+        var marker = new google.maps.Marker({
+            position: latLng,
+            title: "樂活早午餐",
+            animation: google.maps.Animation.DROP,
+            map:map,
+        });
+        var infowindow = new google.maps.InfoWindow();
+        infowindow.setContent('<h3>樂活早午餐</h3><p>早起的桃園，是屬於樂活的時刻，早晨時分找個舒服的角落坐下，那裏是準備喚醒一天活力的地方。</p>');
+        google.maps.event.addListener(marker,'click',function(event){
+            infowindow.open(map,marker);
+        });
+    }
+
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="container" style="width: 80%; margin-top: 70px; margin-bottom: 20px;">
+    <h2 align="center"style="font-family: 標楷體; color: orangered;"><em>關於我們</em></h2>
+    <div class="row my-3">
+        <div class="col-lg-8">
+            <div class="media">
+                <div class="media-body align-self-center" >
+                    <h4 style="font-family: 標楷體; color: rgb(247, 104, 247);">小記</h4>
+                    <p style="font-family: 標楷體; font-size: 20px; color: rgb(211, 9, 211);">
+                        早起的桃園，是屬於樂活的時刻，早晨時分找個舒服的角落坐下，那裏是準備喚醒一天活力的地方，點個漢堡也許是個輕食，麵包可頌、生菜沙拉，無限續杯的飲料，放慢腳步細細體驗早晨，找到周末慵懶的步調吧。
+                    </p>
+                </div>
+            </div>        
+        </div>
+        <div class="col-lg-4">
+            <img class="img-fluid" src="{% static 'images/2021-12-19.png'%}" width="250" height="200" align="right"/>
+        </div>
+    </div>
+    &nbsp;&nbsp;
+    <div class="row my-3">
+        <div class="col-lg-4">
+            <img class="img-fluid" src="{% static 'images/1512058719.jpg'%}" width="250" height="200"/>
+        </div>
+        <div class="col-lg-8">
+            <div class="media">
+                <div class="media-body align-self-center" >
+                    <h4 style="font-family: 標楷體; color: rgb(247, 104, 247);">店內環境</h4>
+                    <p style="font-family: 標楷體; font-size: 20px; color: rgb(211, 9, 211);">
+                        店內環境有一半是開放式廚房一半是用餐區，一旁整片玻璃落地窗讓餐廳看明亮，上面的的管線鐵架一覽無遺帶有工業風格，廚房櫃檯整齊乾淨，提供顧客一個悠閒輕鬆的用餐環境。
+                    </p>
+                </div>
+            </div>        
+        </div>
+    </div>
+    &nbsp;&nbsp;
+    <div class="row my-3">
+        <div class="col-lg-8">
+            <div class="media">
+                <div class="media-body align-self-center" >
+                    <h4 style="font-family: 標楷體; color: rgb(247, 104, 247);">提醒</h4>
+                    <p style="font-family: 標楷體; font-size: 20px; color: rgb(211, 9, 211);">
+                        本店是採自助式不收服務費，調味料、餐具、水都請自行拿取。
+                    </p>
+                    <p style="font-family: 標楷體; font-size: 20px; color: rgb(211, 9, 211);">
+                        調味料使用完畢請放回原位，讓下一位顧客方便取用，謝謝。
+                    </p>
+                </div>
+            </div>        
+        </div>
+        <div class="col-lg-4">
+            <img class="img-fluid" src="{% static 'images/1512058721.jpg'%}" width="250" height="200" align="right"/>
+        </div>
+    </div>
+    &nbsp;&nbsp;
+    <div class="row my-3">
+        <div class="col-lg-4">
+            <div class="media">
+                <div class="media-body align-self-center" >
+                    <p>
+                        <strong><span style="font-size: 20px; color:purple;">樂活早午餐</span></strong><br>
+                            <span style="font-size:5px; color:rebeccapurple ;">營業時間:&nbsp;09:00~18:00&nbsp;&nbsp;(週二公休)</span><br>
+                            <span style="font-size:5px; color:rebeccapurple ;">地址:&nbsp;台灣桃園市大園區五青路300巷53號</span><br>
+                            <span style="font-size:5px; color:rebeccapurple ;">電話:&nbsp;(03)-4620000</span><br>
+                    </p>
+                </div>
+            </div>        
+        </div>
+        <div class="col-lg-4">
+            <div id="map_div" style="width: 650px;height: 400px;"></div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,202 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div style="width: 20%; height: 70px; margin:70px 40% 5%">
+        <img src="{% static 'images/1212.jpg' %}" style="width: 100%;"/>
+    </div>
+    <div id="myCarousel" class="carousel slide" data-ride="carousel" style="width: 20%;margin:40px 40% 50px ;" >
+        <ul class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide="1"></li>
+            <li data-target="#myCarousel" data-slide="2"></li>
+        </ul>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <a href="#">
+                    <img src="{% static 'images/img_1.png' %}" style="width: 100%;">
+                </a>
+            </div>
+            <div class="carousel-item">
+                <a href="#">
+                    <img src="{% static 'images/img_3.jpg' %}" style="width: 100%;">
+                </a>
+            </div>
+            <div class="carousel-item">
+                <a href="#">
+                    <img src="{% static 'images/img_8.png' %}" style="width: 100%;">
+                </a>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#myCarousel" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+    </div>
+    <div  align="center">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/w44C-NKzQ0E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="contentbox" style="margin-top: 70px;">
+        <h2 align="center" style="font-family: 標楷體; color: orangered;"><em>最新消息</em></h2>
+        <ul class="nav nav-pills justify-content-center">
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="pill"  href="#all">全部</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="pill"  href="#公告">公告</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="pill"  href="#新品">新品</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="pill"  href="#活動">活動</a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="all">
+                <table class="table table-hover table-striped table-bordered" style=" width:800px; background-color: white;" align="center">    
+                    <thead class="table-light">
+                        <tr>
+                            <th>分類</th>
+                            <th>標題</th>
+                            <th>時間</th>
+                            <th>點閱</th>
+                        </tr>
+                    </thead>
+                    {% for unit in newsunitsall %}
+                        {% if unit.classification == "公告" %}
+                            <tr>
+                                <td align="center"><p style="background-color: rgb(240, 172, 172);">{{ unit.classification }}</p></td>
+                                <td><a href="/infodetail/{{ unit.id }}">{{ unit.title }}</a></td>
+                                <td>{{ unit.time }}</td>
+                                <td>{{ unit.press }}</td>                
+                            </tr>
+                        {% elif unit.classification == "新品" %}
+                            <tr>
+                                <td align="center"><p style="background-color: rgb(172, 240, 178);">{{ unit.classification }}</p></td>
+                                <td><a href="/infodetail/{{ unit.id }}">{{ unit.title }}</a></td>
+                                <td>{{ unit.time }}</td>
+                                <td>{{ unit.press }}</td>                
+                            </tr>
+                        {% elif unit.classification == "活動" %}
+                            <tr>
+                                <td align="center"><p style="background-color: rgb(192, 172, 240);">{{ unit.classification }}</p></td>
+                                <td><a href="/infodetail/{{ unit.id }}">{{ unit.title }}</a></td>
+                                <td>{{ unit.time }}</td>
+                                <td>{{ unit.press }}</td>                
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                    <tr>
+                        <td style="border: 0cm;"></td>
+                        <td style="border: 0cm;"></td>
+                        <td style="border: 0cm;"></td>
+                        <td style="border: 0cm;"><a href="/information/全部/1/">more...</a></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="tab-pane fade" id="公告">
+                <table class="table table-hover table-striped table-bordered" style=" width:800px; background-color: white;" align="center">    
+                    <thead class="table-light">
+                        <tr>
+                            <th>分類</th>
+                            <th>標題</th>
+                            <th>時間</th>
+                            <th>點閱</th>
+                        </tr>
+                    </thead>
+                    {% for unit in newsunitsannouncement %}
+                        {% if unit.classification == "公告" %}
+                            <tr>
+                                <td align="center"><p style="background-color: rgb(240, 172, 172);">{{ unit.classification }}</p></td>
+                                <td><a href="/infodetail/{{ unit.id }}">{{ unit.title }}</a></td>
+                                <td>{{ unit.time }}</td>
+                                <td>{{ unit.press }}</td>                
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                    <tr>
+                        <td style="border: 0cm;"></td>
+                        <td style="border: 0cm;"></td>
+                        <td style="border: 0cm;"></td>
+                        <td style="border: 0cm;"><a href="/information/公告/1/">more...</a></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="tab-pane fade" id="新品">
+                <table class="table table-hover table-striped table-bordered" style=" width:800px; background-color: white;" align="center">    
+                    <thead class="table-light">
+                        <tr>
+                            <th>分類</th>
+                            <th>標題</th>
+                            <th>時間</th>
+                            <th>點閱</th>
+                        </tr>
+                    </thead>
+                    {% for unit in newsunitsnew %}
+                        {% if unit.classification == "新品" %}
+                            <tr>
+                                <td align="center"><p style="background-color: rgb(172, 240, 178);">{{ unit.classification }}</p></td>
+                                <td><a href="/infodetail/{{ unit.id }}">{{ unit.title }}</a></td>
+                                <td>{{ unit.time }}</td>
+                                <td>{{ unit.press }}</td>                
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                    <tr>
+                        <td style="border: 0cm;"></td>
+                        <td style="border: 0cm;"></td>
+                        <td style="border: 0cm;"></td>
+                        <td style="border: 0cm;"><a href="/information/新品/1/">more...</a></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="tab-pane fade" id="活動">
+                <table class="table table-hover table-striped table-bordered" style=" width:800px; background-color: white;" align="center">    
+                    <thead class="table-light">
+                        <tr>
+                            <th>分類</th>
+                            <th>標題</th>
+                            <th>時間</th>
+                            <th>點閱</th>
+                        </tr>
+                    </thead>
+                    {% for unit in newsunitsactivity %}
+                        {% if unit.classification == "活動" %}
+                            <tr>
+                                <td align="center"><p style="background-color: rgb(192, 172, 240);">{{ unit.classification }}</p></td>
+                                <td><a href="/infodetail/{{ unit.id }}">{{ unit.title }}</a></td>
+                                <td>{{ unit.time }}</td>
+                                <td>{{ unit.press }}</td>                
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                    <tr>
+                        <td style="border: 0cm;"></td>
+                        <td style="border: 0cm;"></td>
+                        <td style="border: 0cm;"></td>
+                        <td style="border: 0cm;"><a href="/information/活動/1/">more...</a></td>
+                    </tr>
+                </table>
+            </div>       
+        </div>       
+    </div>
+    &nbsp;&nbsp;
+    <h2 align="center"style="font-family: 標楷體; color: orangered;"><em>關於我們</em></h2>
+    <div class="container" style="width:800px; background-color: rgb(224, 208, 240);">
+        <div class="row my-3">
+            <div class="col-lg-8">
+                <p style="font-family: 標楷體; font-size: 20px; color: rgb(211, 9, 211);">
+                    早起的桃園，是屬於樂活的時刻，早晨時分找個舒服的角落坐下，那裏是準備喚醒一天活力的地方，點個漢堡也許是個輕食，麵包可頌、生菜沙拉，無限續杯的飲料，放慢腳步細細體驗早晨，找到周末慵懶的步調吧。
+                </p>
+                <input type="button" class="btn btn-info" style=" font-size: 2px;margin-bottom: 5px; float: right;" value="Read More >>" onclick="window.location='/index/'" />
+            </div>
+            <div class="col-lg-4">
+                <a href="#"><img src="{% static 'images/2021-12-19.png'%}" style="height: 200px;width: 250px;"></a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

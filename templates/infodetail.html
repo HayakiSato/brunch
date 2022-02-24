@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="contentbox" style="margin-top: 70px;">
+    <table class="table table-bordered" style=" width:800px; background-color: white;" align="center">
+        <tr>
+            <th colspan="2">
+                <span style="background-color: rgb(240, 172, 172);">{{ classification }}</span>
+                {{ title }}
+            </th>
+        </tr>
+        <tr>
+            <td width="200px">編輯者</td>
+            <td>{{ name }}</td>
+        </tr>
+        <tr>
+            <td>更新日期</td>
+            <td>{{ time }}</td>
+        </tr>
+        <tr>
+            <td>內容</td>
+            <td>{{ message }}</td>
+        </tr>
+    </table>
+</div>
+{% endblock %}

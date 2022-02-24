@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div style="margin-top: 70px; margin-bottom: 20px;" align="center">
+    <h2 style="font-style: oblique; color: brown;"><strong>{{ item }}</strong></h2>
+    <table class="table table-striped" style="width: 600px; background-color: white;" align="center" >
+        <tr>
+            <th>圖片</th>
+            <th>品項</th>
+            <th>價格</th>
+        </tr>
+        {% for unit in units %}
+        <tr>
+            <td><img src="{{unit.pImage.url}}" width="100" height="100" border="0" /></td>
+            <td  width="250" style="font-size:25px;">{{ unit.pName }}</td>
+            <td  width="150" style="font-size: 25px; color: blue;"> 
+                {{ unit.pPrice }}
+                {% if unit.pQty == True %}
+                <img src="{% static 'images/img_99.jpg' %}" style="width: 50px;height: 50px;"  align="right"/>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock %}

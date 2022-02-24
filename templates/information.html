@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="contentbox" style="margin-top: 70px;">
+    <h2 align="center" style="font-family: 標楷體; color: orangered;"><em>最新消息</em></h2>
+    <ul class="nav justify-content-center">
+        <li class="nav-item">
+            {% if pageinfo == "全部" %}
+            <a class="nav-link" href="/information/全部/1/" style="background-color:rgb(184, 243, 243);">全部</a>
+            {% else %}
+            <a class="nav-link" href="/information/全部/1/">全部</a>
+            {% endif %}
+        </li>
+        <li class="nav-item">
+            {% if pageinfo == "公告" %}
+            <a class="nav-link" href="/information/公告/1/" style="background-color:rgb(184, 243, 243);">公告</a>
+            {% else %}
+            <a class="nav-link" href="/information/公告/1/">公告</a>
+            {% endif %}
+        </li>
+        <li class="nav-item">
+            {% if pageinfo == "新品" %}
+            <a class="nav-link" href="/information/新品/1/" style="background-color:rgb(184, 243, 243);">新品</a>
+            {% else %}
+            <a class="nav-link" href="/information/新品/1/">新品</a>
+            {% endif %}
+        </li>
+        <li class="nav-item">
+            {% if pageinfo == "活動" %}
+            <a class="nav-link" href="/information/活動/1/" style="background-color:rgb(184, 243, 243);">活動</a>
+            {% else %}
+            <a class="nav-link" href="/information/活動/1/">活動</a>
+            {% endif %}
+        </li>
+    </ul>
+    <table class="table table-hover table-striped table-bordered" style=" width:800px; background-color: white;" align="center">    
+        <thead class="table-light">
+            <tr>
+                <th>分類</th>
+                <th>標題</th>
+                <th>時間</th>
+                <th>點閱</th>
+            </tr>
+        </thead>
+        {% for unit in newsunits %}
+            {% if unit.classification == "公告" %}
+                <tr>
+                    <td align="center"><p style="background-color: rgb(240, 172, 172);">{{ unit.classification }}</p></td>
+                    <td><a href="/infodetail/{{ unit.id }}">{{ unit.title }}</a></td>
+                    <td>{{ unit.time }}</td>
+                    <td>{{ unit.press }}</td>                
+                </tr>   
+            {% elif unit.classification == "新品" %}
+                <tr>
+                    <td align="center"><p style="background-color: rgb(172, 240, 178);">{{ unit.classification }}</p></td>
+                    <td><a href="/infodetail/{{ unit.id }}">{{ unit.title }}</a></td>
+                    <td>{{ unit.time }}</td>
+                    <td>{{ unit.press }}</td>                
+                </tr>
+            {% elif unit.classification == "活動" %}
+                <tr>
+                    <td align="center"><p style="background-color: rgb(192, 172, 240);">{{ unit.classification }}</p></td>
+                    <td><a href="/infodetail/{{ unit.id }}">{{ unit.title }}</a></td>
+                    <td>{{ unit.time }}</td>
+                    <td>{{ unit.press }}</td>                
+                </tr>
+            {% endif %}
+        {% endfor %}
+        <tr>
+            <td colspan="4" align="center" >
+                {% if currentpage > 1 %}
+                    <input type="button" class="btn btn-secondary" value="〈上一頁" onclick="window.location='/information/{{ pageinfo }}/{{ pageid|add:-1 }} '" />
+                {% endif %}
+                {% if currentpage < totpage %} 
+                    <input type="button" class="btn btn-secondary" value="下一頁〉" onclick="window.location='/information/{{ pageinfo }}/{{ pageid|add:1 }} '" />
+                {% endif %}
+            </td>
+        </tr>
+    </table>     
+</div>
+{% endblock %}
